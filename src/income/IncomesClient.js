@@ -8,15 +8,15 @@ class IncomesClient {
         });
     }
 
-    createIncomes(incomes) {
+    createIncome(incomes) {
         return axios.post('/incomes', incomes);
     }
 
-    updateIncomes(incomes) {
+    updateIncome(incomes) {
         return axios.put(`/incomes/${incomes.id}`, incomes);
     }
 
-    deleteIncomes(incomesId) {
+    deleteIncome(incomesId) {
         return axios.delete(`/incomes/${incomesId}`);
     }
 

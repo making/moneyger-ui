@@ -41,6 +41,10 @@ export default class ExpendituresTable extends Component {
                                 const response = error.response;
                                 if (response.status === 400) {
                                     throw response.data;
+                                } else if (response.data && response.data.message) {
+                                    alert(response.data.message);
+                                    console.error(error);
+                                    throw [];
                                 } else {
                                     alert("Unexpected Error!");
                                     console.error(error);

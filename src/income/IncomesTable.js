@@ -26,7 +26,7 @@ export default class IncomesTable extends Component {
             <div>
                 <Form {...{
                     onSubmit: ({initial, current}) => {
-                        return incomesClient.createIncomes({
+                        return incomesClient.createIncome({
                             incomeDate: current.incomeDate,
                             incomeName: current.incomeName,
                             amount: current.amount
@@ -40,6 +40,10 @@ export default class IncomesTable extends Component {
                                 const response = error.response;
                                 if (response.status === 400) {
                                     throw response.data;
+                                } else if (response.data && response.data.message) {
+                                    alert(response.data.message);
+                                    console.error(error);
+                                    throw [];
                                 } else {
                                     alert("Unexpected Error!");
                                     console.error(error);
@@ -58,7 +62,7 @@ export default class IncomesTable extends Component {
                             initialValue: '',
                             label: 'Income Name'
                         },
-                        unitPrice: {
+                        amount: {
                             label: 'Amount',
                             children: <Input type="number"/>
                         }
