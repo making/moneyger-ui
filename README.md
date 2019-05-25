@@ -1,3 +1,29 @@
+# Moneyger UI
+
+[![](https://jitpack.io/v/making/moneyger-ui.svg)](https://jitpack.io/#making/moneyger-ui)
+
+
+Step 1. Add the JitPack repository to your build file
+
+```xml
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+Step 2. Add the dependency
+
+```xml
+	<dependency>
+	    <groupId>com.github.making</groupId>
+	    <artifactId>moneyger-ui</artifactId>
+	    <version>master-SNAPSHOT</version>
+	</dependency>
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
