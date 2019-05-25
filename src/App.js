@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Tab, Tabs} from 'pivotal-ui/react/tabs';
+import ExpendituresTable from './expenditure/ExpendituresTable';
+import IncomesTable from "./income/IncomesTable";
+import ReportTable from "./report/ReportTable";
+import 'pivotal-ui/css/alignment';
+import 'pivotal-ui/css/vertical-alignment';
+import 'pivotal-ui/css/typography';
+import 'pivotal-ui/css/whitespace';
+import 'pivotal-ui/css/border';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-export default App;
+    render() {
+        return (
+            <div>
+                <h2>Moneyger</h2>
+                <Tabs defaultActiveKey={1} responsiveBreakpoint="md">
+                    <Tab eventKey={1} title="Expenditures">
+                        <ExpendituresTable/>
+                    </Tab>
+                    <Tab eventKey={2} title="Incomes">
+                        <IncomesTable/>
+                    </Tab>
+                    <Tab eventKey={3} title="Report">
+                        <ReportTable/>
+                    </Tab>
+                </Tabs>
+            </div>
+        );
+    }
+};
