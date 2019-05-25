@@ -17,6 +17,10 @@ export default class ExpendituresTable extends Component {
 
     render() {
         const Table = withRenderTdChildren(SortableTable);
+        const formatter = new Intl.NumberFormat('ja-JP', {
+            style: 'currency',
+            currency: 'JPY'
+        });
 
         return (
             <div>
@@ -96,7 +100,8 @@ export default class ExpendituresTable extends Component {
                 }, {
                     attribute: 'unitPrice',
                     displayName: 'Unit Price',
-                    sortable: true
+                    sortable: true,
+                    renderTdChildren: expenditure => formatter.format(expenditure.unitPrice)
                 }, {
                     attribute: 'quantity',
                     displayName: 'Quantity',
@@ -110,7 +115,7 @@ export default class ExpendituresTable extends Component {
 
                 }]} data={this.state.expenditures}/>
                 <p>
-                    Total: {this.totalExpenditure()} JPY
+                    Total: {formatter.format(this.totalExpenditure())}
                 </p>
             </div>
         );

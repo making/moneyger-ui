@@ -13,6 +13,10 @@ export default class ReportTable extends Component {
     }
 
     render() {
+        const formatter = new Intl.NumberFormat('ja-JP', {
+            style: 'currency',
+            currency: 'JPY'
+        });
         const expenditure = this.totalExpenditure();
         const income = this.totalIncome();
         const balance = income - expenditure;
@@ -29,10 +33,9 @@ export default class ReportTable extends Component {
                     attribute: 'balance',
                     displayName: 'Balance',
                 }]} data={[{
-                    income: income,
-                    expenditure: expenditure,
-                    balance: balance
-
+                    income: formatter.format(income),
+                    expenditure: formatter.format(expenditure),
+                    balance: formatter.format(balance)
                 }]}/>
             </div>
         );

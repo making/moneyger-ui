@@ -17,6 +17,10 @@ export default class IncomesTable extends Component {
 
     render() {
         const Table = withRenderTdChildren(SortableTable);
+        const formatter = new Intl.NumberFormat('ja-JP', {
+            style: 'currency',
+            currency: 'JPY'
+        });
 
         return (
             <div>
@@ -89,7 +93,8 @@ export default class IncomesTable extends Component {
                 }, {
                     attribute: 'amount',
                     displayName: 'Amount',
-                    sortable: true
+                    sortable: true,
+                    renderTdChildren: income => formatter.format(income.amount)
                 }, {
                     attribute: 'incomeId',
                     displayName: 'Delete',
@@ -99,7 +104,7 @@ export default class IncomesTable extends Component {
 
                 }]} data={this.state.incomes}/>
                 <p>
-                    Total: {this.totalIncome()} JPY
+                    Total: {formatter.format(this.totalIncome())}
                 </p>
             </div>
         );
